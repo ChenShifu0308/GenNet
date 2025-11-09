@@ -6,7 +6,12 @@ import pandas as pd
 import tensorflow as tf
 import os
 import tables
-import tensorflow.keras as K
+# Compatibility fix for TensorFlow 2.13+
+try:
+    import tensorflow.keras as K
+except (ImportError, AttributeError):
+    import keras as K
+    tf.keras = K
 import sklearn.metrics as skm
 import scipy
 import sys

@@ -1,5 +1,11 @@
 import tensorflow as tf
-import tensorflow.keras.backend as K
+# Compatibility fix for TensorFlow 2.13+
+try:
+    from tensorflow.keras import backend as K
+except (ImportError, AttributeError):
+    import keras
+    tf.keras = keras
+    K = keras.backend
 import scipy.sparse as sp
 
 

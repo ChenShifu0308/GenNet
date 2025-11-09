@@ -8,7 +8,12 @@ import matplotlib
 
 matplotlib.use('agg')
 import tensorflow as tf
-import tensorflow.keras as K
+# Compatibility fix for TensorFlow 2.13+
+try:
+    import tensorflow.keras as K
+except (ImportError, AttributeError):
+    import keras as K
+    tf.keras = K
 import scipy
 import tables
 tf.keras.backend.set_epsilon(0.0000001)

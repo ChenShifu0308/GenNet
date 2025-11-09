@@ -5,7 +5,12 @@ import numpy as np
 import pandas as pd
 import sklearn.metrics as skm
 import tensorflow as tf
-import tensorflow.keras as K
+# Compatibility fix for TensorFlow 2.13+
+try:
+    import tensorflow.keras as K
+except (ImportError, AttributeError):
+    import keras as K
+    tf.keras = K
 from argparse import Namespace
 tf.keras.backend.set_epsilon(0.0000001)
 import os

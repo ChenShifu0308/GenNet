@@ -8,7 +8,13 @@ import matplotlib
 import numpy as np
 import pandas as pd
 import tables
-import tensorflow.keras as K
+import tensorflow as tf
+# Compatibility fix for TensorFlow 2.13+
+try:
+    import tensorflow.keras as K
+except (ImportError, AttributeError):
+    import keras as K
+    tf.keras = K
 
 matplotlib.use('agg')
 

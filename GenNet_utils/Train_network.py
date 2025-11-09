@@ -8,7 +8,12 @@ warnings.filterwarnings('ignore')
 matplotlib.use('agg')
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import tensorflow as tf
-import tensorflow.keras as K
+# Compatibility fix for TensorFlow 2.13+
+try:
+    import tensorflow.keras as K
+except (ImportError, AttributeError):
+    import keras as K
+    tf.keras = K
 from tensorflow.keras.optimizers.legacy import Adam
 
 tf.keras.backend.set_epsilon(0.0000001)
