@@ -64,6 +64,9 @@ This automatically installs the latest Tensorflow version for which GenNet has b
 conda activate env_GenNet
 ```
 
+**Install tensorflow 2.13.0**
+
+
 **Install the packages**
 ```
 pip3 install --upgrade pip
